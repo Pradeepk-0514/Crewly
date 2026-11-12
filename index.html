@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXE — Premium E-Commerce Experience</title>
+  <meta name="description" content="Discover premium fashion, accessories, and lifestyle products at LUXE. Shop curated collections with exclusive deals, fast delivery, and luxury experience." />
+  <meta name="keywords" content="luxury fashion, premium accessories, designer bags, watches, shoes, e-commerce" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ TOAST NOTIFICATIONS ═══════════════ -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">LUXE</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active" onclick="showPage('home')">Home</a>
+        <a href="#shop" class="nav-link" onclick="showPage('shop')">Shop</a>
+        <a href="#categories" class="nav-link" onclick="showPage('categories')">Categories</a>
+        <a href="#deals" class="nav-link" onclick="showPage('deals')">Deals</a>
+        <a href="#about" class="nav-link" onclick="showPage('about')">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-btn search-btn" id="searchToggle" title="Search" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-btn wishlist-btn" id="wishlistToggle" title="Wishlist" aria-label="Open Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="nav-btn cart-btn" id="cartToggle" title="Cart" aria-label="Open Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="nav-btn user-btn" id="userToggle" title="Account" aria-label="My Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+      <div class="search-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search for products, brands, categories..." autocomplete="off" />
+        <button class="search-close" id="searchClose" aria-label="Close search">✕</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <main id="mainContent">
+
+    <!-- ───── HOME PAGE ───── -->
+    <div class="page active" id="page-home">
+
+      <!-- HERO SECTION -->
+      <section class="hero" id="home">
+        <div class="hero-bg">
+          <div class="hero-gradient"></div>
+          <div class="hero-particles" id="heroParticles"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            New Collection 2026
+          </div>
+          <h1 class="hero-title">
+            <span class="title-line">Elevate Your</span>
+            <span class="title-line title-accent">Lifestyle</span>
+          </h1>
+          <p class="hero-subtitle">Discover curated luxury essentials crafted for those who appreciate the finer things in life. Premium quality, timeless style.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="showPage('shop')">
+              <span>Shop Now</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button class="btn-secondary" onclick="showPage('categories')">
+              Browse Categories
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>50K+</strong>
+              <span>Products</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>120K+</strong>
+              <span>Happy Customers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>99%</strong>
+              <span>Satisfaction</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card floating">
+            <div class="hero-product-img">
+              <img src="assets/hero_banner.png" alt="Featured luxury products" />
+            </div>
+          </div>
+          <div class="hero-floating-badge top-right">
+            <span>🔥</span>
+            <div>
+              <strong>Hot Deal</strong>
+              <small>Up to 40% OFF</small>
+            </div>
+          </div>
+          <div class="hero-floating-badge bottom-left">
+            <span>⭐</span>
+            <div>
+              <strong>4.9/5 Rating</strong>
+              <small>12K Reviews</small>
+            </div>
+          </div>
+        </div>
+        <div class="hero-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <!-- MARQUEE STRIP -->
+      <div class="marquee-strip">
+        <div class="marquee-track">
+          <span>✦ FREE SHIPPING OVER ₹999</span>
+          <span>✦ EXCLUSIVE DEALS DAILY</span>
+          <span>✦ 30-DAY EASY RETURNS</span>
+          <span>✦ PREMIUM QUALITY GUARANTEED</span>
+          <span>✦ 24/7 CUSTOMER SUPPORT</span>
+          <span>✦ FREE SHIPPING OVER ₹999</span>
+          <span>✦ EXCLUSIVE DEALS DAILY</span>
+          <span>✦ 30-DAY EASY RETURNS</span>
+          <span>✦ PREMIUM QUALITY GUARANTEED</span>
+          <span>✦ 24/7 CUSTOMER SUPPORT</span>
+        </div>
+      </div>
+
+      <!-- FEATURED CATEGORIES -->
+      <section class="section" id="categories">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">Browse by</p>
+            <h2 class="section-title">Top Categories</h2>
+            <p class="section-sub">Explore our handpicked collections curated for every lifestyle</p>
+          </div>
+          <div class="categories-grid">
+            <div class="cat-card cat-large" onclick="filterByCategory('Bags')" style="--cat-color: #a855f7;">
+              <div class="cat-bg"></div>
+              <img src="assets/product_bag.png" alt="Luxury Bags" class="cat-img" />
+              <div class="cat-info">
+                <h3>Luxury Bags</h3>
+                <span>24 Products</span>
+              </div>
+              <div class="cat-arrow">→</div>
+            </div>
+            <div class="cat-card" onclick="filterByCategory('Shoes')" style="--cat-color: #f59e0b;">
+              <div class="cat-bg"></div>
+              <img src="assets/product_shoes.png" alt="Premium Shoes" class="cat-img" />
+              <div class="cat-info">
+                <h3>Premium Shoes</h3>
+                <span>36 Products</span>
+              </div>
+              <div class="cat-arrow">→</div>
+            </div>
+            <div class="cat-card" onclick="filterByCategory('Watches')" style="--cat-color: #10b981;">
+              <div class="cat-bg"></div>
+              <img src="assets/product_watch.png" alt="Luxury Watches" class="cat-img" />
+              <div class="cat-info">
+                <h3>Luxury Watches</h3>
+                <span>18 Products</span>
+              </div>
+              <div class="cat-arrow">→</div>
+            </div>
+            <div class="cat-card" onclick="filterByCategory('Fragrances')" style="--cat-color: #ec4899;">
+              <div class="cat-bg"></div>
+              <img src="assets/product_perfume.png" alt="Fragrances" class="cat-img" />
+              <div class="cat-info">
+                <h3>Fragrances</h3>
+                <span>42 Products</span>
+              </div>
+              <div class="cat-arrow">→</div>
+            </div>
+            <div class="cat-card" onclick="filterByCategory('Jackets')" style="--cat-color: #3b82f6;">
+              <div class="cat-bg"></div>
+              <img src="assets/product_jacket.png" alt="Fashion" class="cat-img" />
+              <div class="cat-info">
+                <h3>Fashion</h3>
+                <span>58 Products</span>
+              </div>
+              <div class="cat-arrow">→</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED PRODUCTS -->
+      <section class="section section-dark">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">Handpicked for you</p>
+            <h2 class="section-title">Featured Products</h2>
+          </div>
+          <div class="products-grid" id="featuredGrid"></div>
+          <div class="section-cta">
+            <button class="btn-outline" onclick="showPage('shop')">
+              View All Products
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEALS SECTION -->
+      <section class="section" id="deals">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">Limited Time</p>
+            <h2 class="section-title">Hot Deals 🔥</h2>
+            <p class="section-sub">Grab these exclusive offers before they're gone!</p>
+          </div>
+          <div class="deals-grid" id="dealsGrid"></div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="section section-dark features-section">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-tag">Why LUXE?</p>
+            <h2 class="section-title">The LUXE Difference</h2>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🚀</div>
+              <h3>Lightning Fast Delivery</h3>
+              <p>Same-day delivery available in major cities. Free shipping on orders above ₹999.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">💎</div>
+              <h3>Premium Quality</h3>
+              <p>Every product is curated and quality-checked to meet our luxury standards.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔄</div>
+              <h3>Easy 30-Day Returns</h3>
+              <p>Not satisfied? Return hassle-free within 30 days for a full refund.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔒</div>
+              <h3>Secure Payments</h3>
+              <p>256-bit SSL encryption with multiple payment options including UPI, cards, and wallets.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🎁</div>
+              <h3>Gift Wrapping</h3>
+              <p>Complimentary luxury gift wrapping on all orders above ₹2,999.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">💬</div>
+              <h3>24/7 Support</h3>
+              <p>Our dedicated team is here round the clock to assist you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER -->
+      <section class="newsletter-section">
+        <div class="container">
+          <div class="newsletter-card">
+            <div class="newsletter-content">
+              <h2>Join the LUXE Family</h2>
+              <p>Subscribe for exclusive deals, new arrivals, and insider access to premium drops.</p>
+            </div>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email address" required />
+              <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- end #page-home -->
+
+    <!-- ───── SHOP PAGE ───── -->
+    <div class="page" id="page-shop">
+      <div class="page-hero shop-hero">
+        <div class="page-hero-content">
+          <h1>Shop All Products</h1>
+          <p>Discover our complete collection of premium products</p>
+        </div>
+      </div>
+
+      <div class="container shop-layout">
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar" id="shopSidebar">
+          <div class="sidebar-header">
+            <h3>Filters</h3>
+            <button class="clear-filters-btn" onclick="clearFilters()" id="clearFiltersBtn">Clear All</button>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">Category</h4>
+            <div class="filter-options" id="categoryFilters"></div>
+          </div>
+
+          <!-- Price Range -->
+          <div class="filter-group">
+            <h4 class="filter-title">Price Range</h4>
+            <div class="price-range">
+              <input type="range" id="priceRange" min="0" max="50000" value="50000" class="range-slider" oninput="updatePriceFilter(this.value)" />
+              <div class="price-labels">
+                <span>₹0</span>
+                <span id="priceLabel">₹50,000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">Minimum Rating</h4>
+            <div class="rating-filters" id="ratingFilters">
+              <button class="rating-btn active" onclick="filterByRating(0, this)">All Ratings</button>
+              <button class="rating-btn" onclick="filterByRating(4.5, this)">⭐ 4.5 & above</button>
+              <button class="rating-btn" onclick="filterByRating(4, this)">⭐ 4.0 & above</button>
+              <button class="rating-btn" onclick="filterByRating(3, this)">⭐ 3.0 & above</button>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="filter-group">
+            <h4 class="filter-title">Availability</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" id="inStockOnly" onchange="applyFilters()" />
+              <span>In Stock Only</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="onSaleOnly" onchange="applyFilters()" />
+              <span>On Sale</span>
+            </label>
+          </div>
+        </aside>
+
+        <!-- Products Main Area -->
+        <div class="shop-main">
+          <div class="shop-toolbar">
+            <div class="toolbar-left">
+              <span id="productCount" class="product-count">Loading products...</span>
+            </div>
+            <div class="toolbar-right">
+              <select id="sortSelect" class="sort-select" onchange="sortProducts(this.value)">
+                <option value="default">Sort: Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest First</option>
+                <option value="name-az">Name: A-Z</option>
+              </select>
+              <div class="view-toggle">
+                <button class="view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid View">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </button>
+                <button class="view-btn" id="listViewBtn" onclick="setView('list')" title="List View">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="18" width="18" height="2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="products-grid" id="shopGrid"></div>
+          <div class="load-more-section">
+            <button class="btn-outline" id="loadMoreBtn" onclick="loadMoreProducts()">Load More Products</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- end #page-shop -->
+
+    <!-- ───── CATEGORIES PAGE ───── -->
+    <div class="page" id="page-categories">
+      <div class="page-hero">
+        <div class="page-hero-content">
+          <h1>All Categories</h1>
+          <p>Explore our complete range of premium collections</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="all-categories-grid" id="allCategoriesGrid"></div>
+      </div>
+    </div>
+
+    <!-- ───── DEALS PAGE ───── -->
+    <div class="page" id="page-deals">
+      <div class="page-hero deals-hero">
+        <div class="page-hero-content">
+          <div class="deals-badge">🔥 HOT DEALS</div>
+          <h1>Exclusive Offers</h1>
+          <p>Don't miss out on these incredible limited-time deals</p>
+          <div class="countdown-wrapper">
+            <span class="countdown-label">Deals reset in:</span>
+            <div class="countdown" id="countdown">
+              <div class="countdown-item"><span id="countHours">00</span><small>Hours</small></div>
+              <div class="countdown-sep">:</div>
+              <div class="countdown-item"><span id="countMins">00</span><small>Mins</small></div>
+              <div class="countdown-sep">:</div>
+              <div class="countdown-item"><span id="countSecs">00</span><small>Secs</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="products-grid" id="dealsPageGrid"></div>
+      </div>
+    </div>
+
+    <!-- ───── ABOUT PAGE ───── -->
+    <div class="page" id="page-about">
+      <div class="page-hero about-hero">
+        <div class="page-hero-content">
+          <h1>About LUXE</h1>
+          <p>Our story, our mission, our passion for luxury</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="about-content">
+          <div class="about-section">
+            <h2>Our Story</h2>
+            <p>Founded in 2020, LUXE was born from a simple idea: that premium quality shouldn't be a privilege. We set out to create a platform that bridges the gap between luxury and accessibility, curating only the finest products from around the world.</p>
+            <p>Today, we serve over 120,000 customers across India, offering a meticulously selected range of fashion, accessories, and lifestyle products that define modern luxury.</p>
+          </div>
+          <div class="about-stats-row">
+            <div class="about-stat"><strong>120K+</strong><span>Happy Customers</span></div>
+            <div class="about-stat"><strong>50K+</strong><span>Products</span></div>
+            <div class="about-stat"><strong>500+</strong><span>Brands</span></div>
+            <div class="about-stat"><strong>6</strong><span>Years of Excellence</span></div>
+          </div>
+          <div class="about-mission">
+            <h2>Our Mission</h2>
+            <p>To democratize luxury by making premium, authentic products accessible to everyone — while maintaining the exclusivity and quality that makes luxury truly special.</p>
+          </div>
+          <div class="team-section">
+            <h2>Why Trust LUXE?</h2>
+            <div class="trust-grid">
+              <div class="trust-item"><span>✓</span> 100% Authentic Products</div>
+              <div class="trust-item"><span>✓</span> Verified Brands & Sellers</div>
+              <div class="trust-item"><span>✓</span> Secure Payment Gateway</div>
+              <div class="trust-item"><span>✓</span> Dedicated Customer Support</div>
+              <div class="trust-item"><span>✓</span> Easy Return Policy</div>
+              <div class="trust-item"><span>✓</span> Nationwide Delivery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">LUXE</span>
+        </div>
+        <p>Elevating everyday living with premium curated products. Your ultimate destination for luxury lifestyle essentials.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">📷</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="Facebook">👤</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="#" onclick="showPage('shop')">New Arrivals</a>
+        <a href="#" onclick="filterByCategory('Bags')">Bags & Accessories</a>
+        <a href="#" onclick="filterByCategory('Watches')">Watches</a>
+        <a href="#" onclick="filterByCategory('Shoes')">Footwear</a>
+        <a href="#" onclick="showPage('deals')">Hot Deals</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="#">FAQs</a>
+        <a href="#">Track Order</a>
+        <a href="#">Returns & Refunds</a>
+        <a href="#">Shipping Policy</a>
+        <a href="#">Size Guide</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="#" onclick="showPage('about')">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📧 support@luxe.com</p>
+        <p>📞 1800-LUXE-000</p>
+        <p>🕐 Mon–Sat, 9AM–9PM</p>
+        <div class="payment-icons">
+          <span class="pay-icon">VISA</span>
+          <span class="pay-icon">MC</span>
+          <span class="pay-icon">UPI</span>
+          <span class="pay-icon">GPay</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LUXE. All rights reserved. Made with ♥ in India.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ CART PANEL ═══════════════ -->
+  <div class="overlay" id="cartOverlay" onclick="closePanel('cart')"></div>
+  <div class="side-panel cart-panel" id="cartPanel" role="dialog" aria-label="Shopping Cart">
+    <div class="panel-header">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Your Cart
+      </h2>
+      <button class="panel-close" onclick="closePanel('cart')" aria-label="Close cart">✕</button>
+    </div>
+    <div class="panel-body" id="cartBody"></div>
+    <div class="panel-footer" id="cartFooter"></div>
+  </div>
+
+  <!-- ═══════════════ WISHLIST PANEL ═══════════════ -->
+  <div class="overlay" id="wishlistOverlay" onclick="closePanel('wishlist')"></div>
+  <div class="side-panel wishlist-panel" id="wishlistPanel" role="dialog" aria-label="Wishlist">
+    <div class="panel-header">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Wishlist
+      </h2>
+      <button class="panel-close" onclick="closePanel('wishlist')" aria-label="Close wishlist">✕</button>
+    </div>
+    <div class="panel-body" id="wishlistBody"></div>
+    <div class="panel-footer" id="wishlistFooter"></div>
+  </div>
+
+  <!-- ═══════════════ PRODUCT MODAL ═══════════════ -->
+  <div class="modal-overlay" id="productModalOverlay" onclick="closeProductModal()"></div>
+  <div class="product-modal" id="productModal" role="dialog" aria-label="Product Details">
+    <button class="modal-close" onclick="closeProductModal()" aria-label="Close modal">✕</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+  <!-- ═══════════════ USER DROPDOWN ═══════════════ -->
+  <div class="user-dropdown" id="userDropdown">
+    <div class="dropdown-header">
+      <div class="user-avatar">👤</div>
+      <div>
+        <strong>Welcome!</strong>
+        <small>Sign in for a personalized experience</small>
+      </div>
+    </div>
+    <div class="dropdown-links">
+      <a href="#" class="dropdown-link">👤 My Account</a>
+      <a href="#" class="dropdown-link">📦 My Orders</a>
+      <a href="#" class="dropdown-link" onclick="openPanel('wishlist'); closeDropdown()">💖 Wishlist</a>
+      <a href="#" class="dropdown-link">📍 Addresses</a>
+      <a href="#" class="dropdown-link">💳 Payment Methods</a>
+      <div class="dropdown-divider"></div>
+      <a href="#" class="dropdown-link logout">Sign In / Register</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
